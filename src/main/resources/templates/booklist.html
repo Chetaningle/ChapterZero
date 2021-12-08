@@ -11,7 +11,7 @@
 	<div class = "container text-center">
 	<div>
 		<form th:action="@{/logout}" method="post">
-		<p>Hi, <b>[[${#request.userPrincipal.principal.name}]]</b></p> 
+		<p>Hi, <b>[[${#request.userPrincipal.principal.name}]] !</b></p> 
 		<input type="submit" value ="Sign out"/>
 		</form>
 	</div>
