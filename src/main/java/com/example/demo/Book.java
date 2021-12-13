@@ -2,36 +2,93 @@ package com.example.demo;
 
 import javax.persistence.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+//Books object
+
 @Entity
 @Table(name = "books")
 public class Book {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	public int getId() {
-		return id;
+	int id;
+	@Column(name = "book_name")
+	String bookName;
+	@Column(name = "author_name")
+	String authorName;
+	@Column
+	String publisher;
+	@Column
+	String rating;
+	@Column(name = "author_url")
+	String authorUrl;
+	public String getAuthorUrl() {
+		return authorUrl;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setAuthorUrl(String authorUrl) {
+		this.authorUrl = authorUrl;
 	}
 
-	public String getBookName() {
+	@Column(name = "book_url")
+	String bookUrl;
+	@Column
+	int bookid;
+	@Transient
+	public boolean favorite;
+
+//	boolean favorite;
+//	
+	public boolean isFavorite() {
+		return favorite;
+	}
+
+	public void setFavorite(boolean favorite) {
+		this.favorite = favorite;
+	}
+
+	public int getBookid() {
+		return bookid;
+	}
+
+	public void setBookid(int bookid) {
+		this.bookid = bookid;
+	}
+
+	public String getRating() {
+		return rating;
+	}
+
+	public void setRating(String rating) {
+		this.rating = rating;
+	}
+
+	public String getBook_url() {
+		return bookUrl;
+	}
+
+	public void setBook_url(String book_url) {
+		this.bookUrl = book_url;
+	}
+
+	@Autowired
+	public Book() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getBook_name() {
 		return bookName;
 	}
 
-	public void setBookName(String bookName) {
-		this.bookName = bookName;
+	public void setBook_name(String book_name) {
+		this.bookName = book_name;
 	}
 
-	public String getAuthorName() {
+	public String getAuthor_name() {
 		return authorName;
 	}
 
-	public void setAuthorName(String authorName) {
-		this.authorName = authorName;
+	public void setAuthor_name(String author_name) {
+		this.authorName = author_name;
 	}
 
 	public String getPublisher() {
@@ -42,34 +99,9 @@ public class Book {
 		this.publisher = publisher;
 	}
 
-	public double getRating() {
-		return rating;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
 	}
 
-	public void setRating(double rating) {
-		this.rating = rating;
-	}
-
-	public String getBookUrl() {
-		return bookUrl;
-	}
-
-	public void setBookUrl(String bookUrl) {
-		this.bookUrl = bookUrl;
-	}
-
-	@Column(nullable = false, unique = true)
-	private String bookName;
-	
-	@Column(nullable = false)
-	private String authorName;
-
-	@Column(nullable = false)
-	private String publisher;
-	
-	@Column(nullable = false)
-	private double rating;
-	
-	@Column(nullable = false, unique = true)
-	private String bookUrl;
 }

@@ -2,19 +2,20 @@ package com.example.demo;
 
 import javax.persistence.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+//Favorites object
+
 @Entity
 @Table(name = "favorites")
 public class Favorites {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	@Column(nullable = false)
-	private int userID;
-	
-	@Column(nullable = false)
-	private int bookID;
+	int id;
+	@Column
+	int bookid;
+	@Column
+	int userid;
 	
 	public int getId() {
 		return id;
@@ -24,22 +25,34 @@ public class Favorites {
 		this.id = id;
 	}
 
-	public int getUserID() {
-		return userID;
-	}
-
-	public void setUserID(int userID) {
-		this.userID = userID;
-	}
-
-	public int getBookID() {
-		return bookID;
-	}
-
-	public void setBookID(int bookID) {
-		this.bookID = bookID;
+	public int getBookid() {
+		return bookid;
 	}
 
 
+	public void setBookid(int bookid) {
+		this.bookid = bookid;
+	}
 
+
+	public int getUserid() {
+		return userid;
+	}
+
+
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+
+
+	@Autowired
+	public Favorites() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
 }
