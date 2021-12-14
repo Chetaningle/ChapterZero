@@ -24,18 +24,9 @@
 </nav>
 
 	<div class="container text-center">
-		
-		<div>
-			<form th:action="@{/searchBooks}" method="GET" modelAttribute="book" style="padding:50px">
-			<input type="text" id="searchBookInput" th:value="${searchInput}" name="searchBookInput" placeholder="Type: Book, Author, Publication" style="width:50%"/>
-			<button type="submit" class="btn btn-light" style="border-color: black;">Search</button>
-			</form>
-			
-			<form th:action="@{/favorites}" >
-					<button type="submit" class="btn btn-success" style="border-color: black;">My Favorites</button>
-				</form>
-			
-		</div>
+
+	<h3>My Favorites</h1>
+	<a th:href="@{/list_books}"><button>Home</button></a>
 	</div>
 	 <div>
         <table class="table table-striped table-bordered">

@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -85,8 +86,28 @@ public class AppController {
 		     favRepo.save(favUpdate);
 		}
 		viewBooksList(model);
+		
 	    return "booklist";
 	}
 	
+	@GetMapping("favorites")
+	public String allFavourites(Model model) {
+		
+		int userId = CustomUserDetailsService.cache.get("user");	// getting the userid from cache
+		List<Favorites> allfav = favRepo.findByUserid(userId);	//getting all the favorites books
+	    List<Book> allfavBooks = new ArrayList<>();
+	    
+		for(Favorites f: allfav) {
+			Book b = bookRepo.findByBookid(f.bookid);
+			b.setFavorite(true);
+			allfavBooks.add(b);
+		}
+		
+		System.out.print(allfavBooks.toString());
+		
+		model.addAttribute("book", allfavBooks);
+		
+	    return "favorites";
+	}
 	
 }

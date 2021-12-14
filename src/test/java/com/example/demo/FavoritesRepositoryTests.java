@@ -16,7 +16,7 @@ import org.springframework.test.annotation.Rollback;
 public class FavoritesRepositoryTests {
 	
 	@Autowired
-	private FavoritesRepository favRepo;
+	private FavRepository favRepo;
 	
 	@Autowired
 	private TestEntityManager entityManager;
