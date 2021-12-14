@@ -11,4 +11,5 @@ import org.springframework.stereotype.Repository;
 public interface FavRepository extends CrudRepository<Favorites, Integer> {
     List<Favorites> findAll();	//just in case
     List<Favorites> findByUserid(int id);	//get all favorite books
+    void removeByUseridAndBookid(int id, int bookid);
 }
