@@ -19,6 +19,8 @@ public class AppController {
 	@Autowired FavRepository favRepo;	//Repository to the Favorites DB
 	List<Favorites> fav;
 	
+	List<Book> book;
+	
 	@GetMapping("")
 	public String viewHomePage() {
 		return "index";
@@ -45,13 +47,19 @@ public class AppController {
 	public String viewBooksList(Model model) {
 		int userId = CustomUserDetailsService.cache.get("user");	// getting the userid from cache
 		fav = favRepo.findByUserid(userId);	//getting all the favorites books
+		
+//		book = bookRepo.findAll();
+//		model.addAttribute("book", book);
+		
+		getCompanyById(model, "");
+		
 	    return "booklist";
 	}
 
 	@GetMapping("/searchBooks")
     public String getCompanyById(Model model, @RequestParam("searchBookInput") String searchInput)
     {
-        List<Book> book = bookRepo.findByAuthorNameContainsOrBookNameContainsOrPublisherContains(searchInput, searchInput, searchInput);
+        book = bookRepo.findByAuthorNameContainsOrBookNameContainsOrPublisherContains(searchInput, searchInput, searchInput);
         for(Book b: book) {	// a little inefficient way of finding the favorites books from the search list
         	for(Favorites f: fav) {
         		System.out.println(b.authorUrl);
