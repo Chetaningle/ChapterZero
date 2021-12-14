@@ -8,23 +8,27 @@
 <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
 <script type="text/javascript"
 	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-	<div class="container text-center">
-		<div>
-			<form th:action="@{/logout}" method="post">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<h1 style="margin-left:40%;text-decoration:underline">CHAPTER ZERO</h1>
+<div>
+			<form th:action="@{/logout}" method="post" style="margin-left: 300px;width: 100%;">
 				<p>
 					Hi, <b>[[${#request.userPrincipal.principal.name}]] !</b>
 				</p>
 				<input type="submit" value="Sign out" />
 			</form>
 		</div>
-		<h1>BookList</h1>
+</nav>
+
+	<div class="container text-center">
+		
 		<div>
-			<h3>Table here</h3>
-			<form th:action="@{/searchBooks}" method="GET" modelAttribute="book">
-			<input type="text" id="searchBookInput" name="searchBookInput" placeholder="Type: Book, Author, Publication"/>
-			<button type="submit">Search</button>
+			<form th:action="@{/searchBooks}" method="GET" modelAttribute="book" style="padding:50px">
+			<input type="text" id="searchBookInput" th:value="${searchInput}" name="searchBookInput" placeholder="Type: Book, Author, Publication" style="width:50%"/>
+			<button type="submit" class="btn btn-light" style="border-color: black;">Search</button>
 			</form>
 		</div>
 	</div>
@@ -43,13 +47,27 @@
             </thead>
             <tbody>
                 <tr th:each="book: ${book}">
-                    
                     <td><a th:text="${book.book_name}" target="_blank" th:href="@{${book.book_url}}"></a></td>
                     <td><a th:text="${book.author_name}" target="_blank" th:href="@{${book.authorUrl}}"></a></td>
                     <td th:text="${book.rating}">Rating</td>
                     <td th:text="${book.publisher}">Publisher</td>
-  					<td th:if="${book.favorite == true}"><p><span style="font-size:150%; color:red;">&hearts;</span></p></td>
-  					<td th:if="${book.favorite == false}"><p><span style="font-size:150%;">&hearts;</span></p></td>      
+  					<td th:if="${book.favorite == true}">
+  						<form th:action="@{/updateFavorites}" method="POST" th:object="${book1}">
+  							<input type="hidden" name="updateFavorite" />
+  							 <input type="hidden" name="bookid" th:value="${book.bookid}">
+  							 <input type="hidden" name="favorite" th:value="${book.favorite}">
+  							 <input type="hidden" id="searchBookInput" name="searchBookInput" th:value="value"/>
+  							<button type="submit" style="border:none;background: none;"><span style="font-size:150%; color:red;">&hearts;</span></button>
+  						</form>
+  						</td>
+  					<td th:if="${book.favorite == false}">
+  						<form th:action="@{/updateFavorites}" method="POST">
+  							<form th:action="@{/updateFavorites}" method="POST" th:object="${book1}">
+  							<input type="hidden" name="updateFavorite" />
+  							 <input type="hidden" name="bookid" th:value="${book.bookid}">
+  							 <input type="hidden" name="favorite" th:value="${book.favorite}">
+  							<button type="submit" style="border:none;background: none;"><span style="font-size:150%;">&hearts;</span></button>
+  						</form></td>      
                 </tr>
             </tbody>
         </table>

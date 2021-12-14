@@ -1,21 +1,38 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="ISO-8859-1">
-    <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
-    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	<meta charset="ISO-8859-1">
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-	<div class = "container">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<h1 style="margin-left:40%;text-decoration:underline">CHAPTER ZERO</h1>
+		<h3 style="margin-left:250px;text-decoration:underline;padding:5px;margin-right:50px;border:1px solid black;"><a style="color:black;" th:href="@{/login}">Login</a></h3>
+				<h3 style="text-decoration:underline;padding:5px;border:1px solid black;"><a style="color: black;" th:href="@{/signup}">Sign Up</a></h3>
+	</nav>
+	<div class="container">
 		<h1>Welcome to Chapter Zero!</h1>
-		<div>
-			<h3><a th:href="@{/login}">Login</a></h3>
-			<h3><a th:href="@{/signup}">Sign Up</a></h3>
-		</div>
+		<blockquote><strong>-Chetan Ingle(cmi8525)</strong>
+		<br><strong>-Supritha S Bhat(ssb9863)</strong>
+		<br>
+		<br>Chapter Zero is an online library. Online libraries act as a reservoir for the storage of important research data, information, and findings. Our system implements an online library system using Java and Spring Boot. 
+
+<br>Our application is a 3 Tier MVC Web Application. The interactive GUI allows the User to login to the system and search for the desired resource from our Database. The search can be based on various keywords like the Title of the resource, Author of the resource or the publication. The user can choose the desired resource from the search results. The user can also view more about the author by the embedded link to Author’s profile among the search result. The user can favorite their resources and access them later. 
+<br>
+The application will be leveraging Java features like:<br>
+•	OOPS<br>
+•	Exception Handling<br>
+•	Database/JDBC<br>
+•	Rest APIs<br>
+</blockquote>
 	</div>
-	
-	
+
+
 </body>
+
 </html>
