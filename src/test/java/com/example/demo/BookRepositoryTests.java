@@ -25,17 +25,17 @@ public class BookRepositoryTests {
 	public void testCreateBook() {
 		Book book = new Book();
 		
-		book.setBookName("Harry Potter and the Sorcerer's Stone");
-		book.setAuthorName("J.K. Rowling");
+		book.setBook_name("Harry Potter and the Sorcerer's Stone");
+		book.setAuthor_name("J.K. Rowling");
 		book.setPublisher("Bloomsbury");
-		book.setRating(4.5);
-		book.setBookUrl("www.google.com");
+		book.setRating("4.5");
+		book.setBook_url("www.google.com");
 		
 		
 		Book saved = bookRepo.save(book);
-		Book exists = entityManager.find(Book.class, saved.getId());
+		Book exists = entityManager.find(Book.class, saved.getBookid());
 		
-		assertThat(exists.getBookName()).isEqualTo(book.getBookName());
+		assertThat(exists.getBook_name()).isEqualTo(book.getBook_name());
 	}
 	
 

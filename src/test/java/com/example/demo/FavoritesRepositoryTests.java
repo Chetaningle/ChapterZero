@@ -25,14 +25,14 @@ public class FavoritesRepositoryTests {
 	public void testCreateFavorites() {
 		Favorites fav = new Favorites();
 		
-		fav.setUserID(1);
-		fav.setBookID(1);
+		fav.setUserid(1);
+		fav.setBookid(1);
 		
 		
 		Favorites saved = favRepo.save(fav);
 		Favorites exists = entityManager.find(Favorites.class, saved.getId());
 		
-		assertThat(exists.getUserID()).isEqualTo(fav.getUserID());
+		assertThat(exists.getUserid()).isEqualTo(fav.getUserid());
 	}
 	
 
